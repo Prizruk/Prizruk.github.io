@@ -10,7 +10,7 @@
 			delta = start - Date.now();
 			isTimedOut = delta <= 0
 			if (isTimedOut){
-				document.getElementById("id_clock").hidden = true;
+				disableOnTimeout();
 			}
 			else {
 				var seconds = Math.floor(delta/1000);
@@ -29,6 +29,11 @@
 				setTimeout("digitalClock()", 1000);
 			}
 		}
+		function disableOnTimeout() {
+			window.alert("Ваше время истекло");
+			document.getElementById("id_clock").hidden = true;
+
+		}
 	</script>
 </head>
 <body>
@@ -37,6 +42,7 @@
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
+	<script>disableOnTimeout();</script>
 
 	
 </body>
