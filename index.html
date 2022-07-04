@@ -6,8 +6,19 @@
 		const start = Date.now() + givenMinutes*1000*60;
 		var delta = 1;
 		var correct = 0;
-		const answers = [4];
+		const answers = [3];
 		
+		//Сбрасываем кнопки
+		function uncheckAll(){
+			for (let i = 0; i < answers.length; i++){
+				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
+				for (const button of buttons) {
+					button.checked = false;
+				}
+			}
+		}
+		
+		//Проверяем ответы
 		function checkAnswers(){
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
@@ -58,9 +69,8 @@
 
 	</script>
 </head>
-<body>
+<body onload="uncheckAll()">
 	<h1>Тестовая версия тестовой страницы с тестом теста</h1>
-	<p>Сделано с нуля, используя GitHub Pages для хостинга</p>
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
