@@ -62,7 +62,8 @@
 						for (const button of buttons) {
 							if (button.checked) {
 								if (button.value == answers[i]){
-									checkRight(corq);
+									corq.style.color = "green";
+									correct += 1;
 									break;
 								}
 							}				
@@ -70,22 +71,27 @@
 						break;
 					case 'checkbox':
 						var failedcheck = false;
+						correct += 1;
 						for (let j = 0; j < buttons.length; j++){
 							if (buttons[i].checked != answers[i][j]){
 								failedcheck = true;
-								break;
+								correct -= 1/(answers.length);
 							}
 						}
 						if (!failedcheck) checkRight(corq);
 						break;
 				}
 			}
+			//Округляем до двух знаков
+			correct = Math.round((correct + Number.EPSILON) * 100) / 100
+			const correctPercent = correct / answers*100;
+			var resultText = "Вы получили " + correct + "/" + answers.length + "(" + correctPercent + ")";			
+			document.getElementById("testResults").innerHTML = resultText;
 		}
 		
 		//Отмечаем правильный ответ
 		function checkRight(corq){
 			correct += 1;
-			corq.style.color = "green";
 		}
 		
 		//Убираем и выключаем по истечении времени
@@ -176,5 +182,6 @@
 			<input type="checkbox" id="ques24" name="ques24">
 			<label for="ques24">Земля вращается вокруг своей оси</label><br>
 	</form>
+	<div id="testResults"></div>
 </body>
 </html>
