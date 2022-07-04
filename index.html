@@ -7,7 +7,7 @@
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3,[0,0,1,1]];
+		const answers = [3,[false,false,true,true]];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
@@ -71,12 +71,14 @@
 						break;
 					case 'checkbox':
 						var failedcheck = false;
-						correct += 1;
+						console.log(answers[i].length);
 						for (let j = 0; j < answers[i].length; j++){
 							console.log(buttons[i].checked + " " + answers[i][j]);
-							if (buttons[i].checked != answers[i][j]){
+							if (buttons[i].checked == answers[i][j]){
+								correct += 1/(answers[i].length);
+							}
+							else {
 								failedcheck = true;
-								correct -= 1/(answers[i].length);
 							}
 						}
 						if (!failedcheck) corq.style.color = "green";
