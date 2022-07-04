@@ -25,11 +25,26 @@
 			document.getElementById("questions").hidden = true;
 
 		}
-		
-		function setup(){
+		//Запускаем тест и таймер
+		function setupTest(){
 			start = Date.now() + givenMinutes*1000*60;
 			document.getElementById("id_clock").hidden = false;
 			document.getElementById("questions").hidden = true;
+		}
+		
+		//Проверяем данные перед запуском теста
+		function checkInfo(){
+			const checkname = document.getElementById('qname');
+			if (!checkname.validity.valid){
+				alert("ФИО введено неправильно");
+				return;
+			}
+			const checkemail = document.getElementById('qemail');
+			if (!checkemail.validity.valid){
+				alert("email введён неправильно");
+				return;
+			}
+			setupTest();
 		}
 		
 		//Проверяем ответы
@@ -37,6 +52,7 @@
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
+				//Автоматически неправильный, пока не правильный
 				corq.style.color = "red";
 				switch (buttons[0].type) {
 					case 'radio':
@@ -62,6 +78,7 @@
 			}
 		}
 		
+		//Отмечаем правильный ответ
 		function checkRight(corq){
 			correct += 1;
 			corq.style.color = "green";
@@ -124,7 +141,7 @@
 		<label for="qemail">email:</label><br>
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$"><br>
 	</form>
-	
+	<p><button onclick="checkInfo()">Начать Тест</button></p>
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
