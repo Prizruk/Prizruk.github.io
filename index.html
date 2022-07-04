@@ -5,9 +5,10 @@
 		var givenMinutes = 0.5;
 		var start = Date.now() + givenMinutes*1000*60;
 		var delta = 1;
-		var isTimedOut = delta == 0
+		var isTimedOut = false;
 		function digitalClock() {
 			delta = start - Date.now();
+			isTimedOut = delta <= 0
 			var seconds = Math.floor(delta/1000);
 			var minutes = 0;
 			if (seconds > 60){
