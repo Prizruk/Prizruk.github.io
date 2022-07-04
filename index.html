@@ -11,8 +11,8 @@
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
-			//document.getElementById('qname').value = '';
-			//document.getElementById('qemail').value = '';
+			document.getElementById('qname').value = '';
+			document.getElementById('qemail').value = '';
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				for (const button of buttons) {
