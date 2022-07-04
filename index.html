@@ -2,7 +2,7 @@
 <html>
 <head>   
 	<script>
-		const givenMinutes = 0.1;
+		const givenMinutes = 1;
 		var start = 0;
 		var delta = 1;
 		var correct = 0;
@@ -28,8 +28,11 @@
 		//Запускаем тест и таймер
 		function setupTest(){
 			start = Date.now() + givenMinutes*1000*60;
+			delta = start - Date.now();
+
 			document.getElementById("id_clock").hidden = false;
-			document.getElementById("questions").hidden = true;
+			document.getElementById("questions").hidden = false;
+			document.getElementById("startTestButton").disabled = true;
 		}
 		
 		//Проверяем данные перед запуском теста
@@ -141,7 +144,7 @@
 		<label for="qemail">email:</label><br>
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$"><br>
 	</form>
-	<p><button onclick="checkInfo()">Начать Тест</button></p>
+	<button onclick="checkInfo()" id="startTestButton">Начать Тест</button>
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
