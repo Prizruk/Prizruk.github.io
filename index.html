@@ -9,7 +9,7 @@
 		const answers = [3];
 		
 		//Сбрасываем кнопки
-		function uncheckAll(){
+		function resetAll(){
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				for (const button of buttons) {
@@ -37,14 +37,14 @@
 			}
 		}
 		
-		//Убираем или Выключаем по истечении времени
+		//Убираем и выключаем по истечении времени
 		function disableOnTimeout() {
 			window.alert("Ваше время истекло");
 			document.getElementById("id_clock").hidden = true;
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				for (const button of buttons) {
-					button.disabled = t;
+					button.disabled = true;
 				}
 			}
 			checkAnswers();
@@ -78,7 +78,7 @@
 	<title>Тест теста</title>
 	<link rel="icon" type="image/x-icon" href="favicon.png">
 </head>
-<body onload="uncheckAll()">
+<body onload="resetAll()">
 	<h1>Тестовая версия тестовой страницы с тестом теста</h1>
 	<div id="id_clock">
 		<script>digitalClock();</script>
