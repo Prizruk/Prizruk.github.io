@@ -84,7 +84,7 @@
 			}
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
-			const correctPercent = correct / answers*100;
+			const correctPercent = correct / answers.length * 100;
 			var resultText = "Вы получили " + correct + "/" + answers.length + "(" + correctPercent + ")";			
 			document.getElementById("testResults").innerHTML = resultText;
 		}
@@ -182,6 +182,6 @@
 			<input type="checkbox" id="ques24" name="ques24">
 			<label for="ques24">Земля вращается вокруг своей оси</label><br>
 	</form>
-	<div id="testResults"></div>
+	<p id="testResults"></p>
 </body>
 </html>
