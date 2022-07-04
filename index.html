@@ -44,12 +44,12 @@
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				for (const button of buttons) {
-					button.disabled = true;
+					button.disabled = t;
 				}
 			}
-		}
 			checkAnswers();
 		}
+		
 		//Таймер
 		function digitalClock() {
 			delta = start - Date.now();
