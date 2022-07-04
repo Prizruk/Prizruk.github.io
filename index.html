@@ -34,11 +34,8 @@
 	<h1>Hello World</h1>
 	<p>I'm hosted with GitHub Pages.</p>
 	<div id="id_clock"></div>
-	<script>digitalClock();</script></br>
-	{% if isTimedOut %}
-	<p>Your time is up</p>
-	{% else %}
-	<p>You still have time</p>
-	{% endif %}
+	<script>digitalClock();</script>
+	<script>disableOnTimeout();</script>
+	
 </body>
 </html>
