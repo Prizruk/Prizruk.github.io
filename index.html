@@ -7,7 +7,7 @@
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3, [false,false,true,true], 1, 9.81];
+		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия'];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
@@ -65,7 +65,7 @@
 							if (button.checked) {
 								if (button.value == answers[i]){
 									corq.style.color = "green";
-									correct += 1;
+									correct++;
 									break;
 								}
 							}				
@@ -85,7 +85,14 @@
 					case 'number':
 						if (buttons[0].value == answers[i]) {
 							corq.style.color = "green";
-							correct += 1;
+							correct++;
+						}
+					case 'text':
+						const textcheck = buttons[0].value.trim().toLowerCase();
+						console.log(textcheck + " " + answers[i]);
+						if (textcheck == answers[i]){
+							corq.style.color = "green"
+							correct++;
 						}
 				}
 			}
@@ -197,6 +204,10 @@
 		<div id="question4">
 			<p><b>4. Чему равно ускорение свободного падения на Земле в м/с<sup>2</sup>? Укажите с точностью до двух знаков после запятой.</b></p>
 			<input name="ques4" id="ques4" type="number" step='0.01'><br>
+		</div>
+		<div id="question5">
+			<p><b>5. Как называется наука, изучающая происхождение и развитие небесных тел?"</b></p>
+			<input name="ques5" id="ques5" type="text"><br>
 		</div>
 	</form>
 	<p id="testResults"></p>
