@@ -2,7 +2,7 @@
 <html>
 <head>   
 	<script>
-		var givenMinutes = 0.2;
+		var givenMinutes = 0.3;
 		var start = 0;
 		var delta = 1;
 		var correct = 0;
@@ -79,7 +79,7 @@
 							}
 						}
 						correct += 1/(answers[i].length)*sucesses;
-						if (sucesses > 0 && sucesses < answers[i].length) corq.style.color = "yellow";
+						if (sucesses > 0 && sucesses < answers[i].length) corq.style.color = "gold";
 						if (sucesses == answers[i].length) corq.style.color = "green";
 						break;
 					case 'number':
