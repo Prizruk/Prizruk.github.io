@@ -2,9 +2,12 @@
 <html>
 <head>   
 	<script>
-		var start = Date.now();
+		var givenMinutes = 1;
+		var start = Date.now() + givenMinutes*1000*60;
+		var delta = 0;
+		var isTimedOut = delta == 0
 		function digitalClock() {
-			var delta = Date.now() - start;
+			delta = start - Date.now();
 			var seconds = Math.floor(delta/1000);
 			var minutes = 0;
 			if (seconds > 60){
@@ -26,6 +29,11 @@
 	<h1>Hello World</h1>
 	<p>I'm hosted with GitHub Pages.</p>
 	<div id="id_clock"></div>
-	<script>digitalClock();</script>
+	<script>digitalClock();</script></br>
+	{% if isTimedOut %}
+	<p>Your time is up</p>
+	{% else %}
+	<p>You still have time</p>
+	{% endif %}
 </body>
 </html>
