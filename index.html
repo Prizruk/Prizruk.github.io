@@ -121,7 +121,7 @@
 	<h2>Личная информация</h2>
 	<form id="personal_info" autocomplete="on">
 		<label for="qname">ФИО (полностью):</label><br>
-		<input type="text" id="qname" name="qname" size=40 minlength="5" required pattern="([а-яА-Я]+\s?){3}"><br>
+		<input type="text" id="qname" name="qname" size=40 minlength="5" required pattern="([а-яА-Я]+\s){2}[а-яА-Я]+$"><br>
 		<label for="qemail">email:</label><br>
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern=^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$><br>
 	</form>
