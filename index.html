@@ -62,7 +62,6 @@
 				switch (buttons[0].type) {
 					case 'radio':
 						for (const button of buttons) {
-							console.log(button.value + " " + answers[i]);
 							if (button.checked) {
 								if (button.value == answers[i]){
 									corq.style.color = "green";
@@ -73,16 +72,15 @@
 						}
 						break;
 					case 'checkbox':
-						var failedcheck = false;
+						let sucesses = 0;
 						for (let j = 0; j < answers[i].length; j++){
 							if (buttons[j].checked == answers[i][j]){
-								correct += 1/(answers[i].length);
-							}
-							else {
-								failedcheck = true;
+								sucesses++;
 							}
 						}
-						if (!failedcheck) corq.style.color = "green";
+						correct += 1/(answers[i].length)*sucesses;
+						if (sucesses > 0 && sucesses < answers[i].length) corq.style.color = "yellow";
+						if (sucesses == answers[i].length) corq.style.color = "green";
 						break;
 					case 'number':
 						if (buttons[0].value == answers[i]) {
@@ -94,7 +92,7 @@
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
 			const correctPercent = correct / answers.length * 100;
-			var resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + "%)";			
+			const resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + "%)";			
 			document.getElementById("testResults").innerHTML = resultText;
 		}
 		
