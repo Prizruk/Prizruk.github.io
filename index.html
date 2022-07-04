@@ -2,10 +2,11 @@
 <html>
 <head>   
 	<script>
-		const givenMinutes = 1;
+		var givenMinutes = 1;
 		var start = 0;
 		var delta = 1;
 		var correct = 0;
+		const startedTimer = false;
 		const answers = [3,[0,0,1,1]];
 		
 		//Сбрасываем кнопки и время
@@ -89,8 +90,8 @@
 		
 		//Убираем и выключаем по истечении времени
 		function disableOnTimeout() {
+			startedTimer = false;
 			window.alert("Ваше время истекло");
-			document.getElementById("id_clock").hidden = true;
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				for (const button of buttons) {
@@ -102,9 +103,11 @@
 		
 		//Таймер
 		function digitalClock() {
-			if (start != 0){
+			var timertext = "Осталось "
+			if (startedTimer){
 				delta = start - Date.now();
 				if (delta <= 0){
+					givenMinutes = 0;
 					disableOnTimeout();
 				}
 				else {
@@ -115,14 +118,19 @@
 						seconds = seconds % 60;
 					}
 					//Добавление ведущих нулей и компановка
-					var timertext = "Осталось "
-					if (minutes < 10) timertext = timertext + "0";
-					timertext = timertext + minutes + ":";
-					if (seconds < 10) timertext = timertext + "0";
-					timertext = timertext + seconds;
+					if (minutes < 10) timertext += "0";
+					timertext += minutes + ":";
+					if (seconds < 10) timertext += "0";
+					timertext += seconds;
 					document.getElementById("id_clock").innerHTML = timertext;
 					setTimeout("digitalClock()", 1000);
 				}
+			}
+			else {
+				if (givenMinutes < 10) timertext += "0";
+				timertext += givenMinutes + ":00";
+				document.getElementById("id_clock").innerHTML = timertext;
+				setTimeout("digitalClock()", 1000);			
 			}
 		}
 
@@ -144,7 +152,7 @@
 		<label for="qemail">email:</label><br>
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$"><br>
 	</form>
-	<button onclick="checkInfo()" id="startTestButton">Начать Тест</button>
+	<p><button onclick="checkInfo()" id="startTestButton">Начать Тест</button></p>
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
