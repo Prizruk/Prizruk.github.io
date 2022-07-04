@@ -3,19 +3,33 @@
 <head>   
 	<script>
 		const givenMinutes = 0.1;
-		const start = Date.now() + givenMinutes*1000*60;
+		var start = Date.now() + givenMinutes*1000*60;
 		var delta = 1;
 		var correct = 0;
-		const answers = [3];
+		const answers = [3,[0,0,1,1]];
 		
-		//Сбрасываем кнопки
+		//Сбрасываем кнопки и время
 		function resetAll(){
+			document.getElementById("id_clock").hidden = true;
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
+				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
 				for (const button of buttons) {
-					button.checked = false;
+					if (button.type == "radio" || button.type == "checkbox") {
+						button.checked = false;
+					}
+					else {
+						button.value = '';
+					}
 				}
 			}
+			document.getElementById("questions").hidden = true;
+
+		}
+		
+		function setup(){
+			start = Date.now() + givenMinutes*1000*60;
+			document.getElementById("id_clock").hidden = false;
+			document.getElementById("questions").hidden = true;
 		}
 		
 		//Проверяем ответы
@@ -24,17 +38,33 @@
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
 				corq.style.color = "red";
-				for (const button of buttons) {
-					if (button.checked) {
-						console.log(button.value);
-						if (button.value == answers[i]){
-							correct += 1;
-							corq.style.color = "green";
-							break;
+				switch (buttons[0].type) {
+					case 'radio':
+						for (const button of buttons) {
+							if (button.checked) {
+								console.log(button.value);
+								if (button.value == answers[i]){
+									checkRight(corq);
+									break;
+								}
+							}				
 						}
-					}				
+						break;
+					case 'checkbox':
+						
+						for (let j = 0; j < buttons.length; j++){
+							if (buttons[i].checked != answers[i][j])
+								break;
+						}
+						checkRight(corq);
+						break;
 				}
 			}
+		}
+		
+		function checkRight(corq){
+			correct += 1;
+			corq.style.color = "green";
 		}
 		
 		//Убираем и выключаем по истечении времени
@@ -80,17 +110,35 @@
 </head>
 <body onload="resetAll()">
 	<h1>Тестовая версия тестовой страницы с тестом теста</h1>
+	<h2>Личная информация</h2>
+	<form id="personal_info" autocomplete="on">
+		<label for="qname">ФИО (полностью):</label><br>
+		<input type="text" id="qname" name="qname"><br>
+		<label for="qemail">email:</label><br>
+		<input type="Text" id="qemail" name="qemail"><br>
+	</form>
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
-	<h2>Вопросы:</h2>
-	<div id="question1">
-		<p><b>1. Как называется минимальная скорость, которую необходимо придать телу, стартующему на поверхности Земли, чтобы оно могло преодолеть притяжение Земли и Солнца и покинуть пределы Солнечной системы</b></p>
-		<p><input name="q1" type="radio" value=1>Первая космическая</p>
-		<p><input name="q1" type="radio" value=2>Вторая космическая</p>
-		<p><input name="q1" type="radio" value=3>Третья космическая</p>
-		<p><input name="q1" type="radio" value=4>Четвёртая космическая</p>
-	</div>
-	
+	<form id="questions" autocomplete="off">
+		<h2>Вопросы:</h2>
+		<div id="question1">
+			<p><b>1. Как называется минимальная скорость, которую необходимо придать телу, стартующему на поверхности Земли, чтобы оно могло преодолеть притяжение Земли и Солнца и покинуть пределы Солнечной системы</b></p>
+			<p><input name="q1" type="radio" value=1>Первая космическая</p>
+			<p><input name="q1" type="radio" value=2>Вторая космическая</p>
+			<p><input name="q1" type="radio" value=3>Третья космическая</p>
+			<p><input name="q1" type="radio" value=4>Четвёртая космическая</p>
+		</div>
+		<div id="question2">
+			<p><b>2. Отметьте правдивые высказывания</b></p>
+			<input type="checkbox" id="q21" name="q21">
+			<label for="q21">Земля плоская</label><br>
+			<input type="checkbox" id="q22" name="q22">
+			<label for="q22">Солнце вращается вокруг Земли</label><br>
+			<input type="checkbox" id="q23" name="q23">
+			<label for="q23">Луна вращается вокруг Земли</label><br>
+			<input type="checkbox" id="q24" name="q24">
+			<label for="q24">Земля вращается вокруг своей оси</label><br>
+	</form>
 </body>
 </html>
