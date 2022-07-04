@@ -41,6 +41,14 @@
 		function disableOnTimeout() {
 			window.alert("Ваше время истекло");
 			document.getElementById("id_clock").hidden = true;
+			function uncheckAll(){
+			for (let i = 0; i < answers.length; i++){
+				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
+				for (const button of buttons) {
+					button.disabled = true;
+				}
+			}
+		}
 			checkAnswers();
 		}
 		//Таймер
