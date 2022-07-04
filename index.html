@@ -31,10 +31,9 @@
 		function setupTest(){
 			start = Date.now() + givenMinutes*1000*60;
 			delta = start - Date.now();
-
 			startedTimer = true;
 			document.getElementById("questions").hidden = false;
-			document.getElementById("startTestButton").disabled = true;
+			document.getElementById("startTestButton").hidden = true;
 		}
 		
 		//Проверяем данные перед запуском теста
@@ -111,13 +110,14 @@
 		//Убираем и выключаем по истечении времени
 		function disableOnTimeout() {
 			startedTimer = false;
-			window.alert("Ваше время истекло");
+			if (delta <= 0) window.alert("Ваше время истекло");
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				for (const button of buttons) {
 					button.disabled = true;
 				}
 			}
+			document.getElementById("endTestButton").hidden = true;
 			checkAnswers();
 		}
 		
@@ -206,10 +206,11 @@
 			<input name="ques4" id="ques4" type="number" step='0.01'><br>
 		</div>
 		<div id="question5">
-			<p><b>5. Как называется наука, изучающая происхождение и развитие небесных тел?"</b></p>
+			<p><b>5. Как называется наука, изучающая происхождение и развитие небесных тел?</b></p>
 			<input name="ques5" id="ques5" type="text"><br>
 		</div>
 	</form>
+	<p><button onclick="disableOnTimeout()" id="endTestButton">Закончить Тест</button></p>
 	<p id="testResults"></p>
 </body>
 </html>
