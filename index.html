@@ -78,7 +78,7 @@
 								correct -= 1/(answers[i].length);
 							}
 						}
-						if (!failedcheck) checkRight(corq);
+						if (!failedcheck) corq.style.color = "green";
 						break;
 				}
 			}
@@ -91,7 +91,7 @@
 		
 		//Отмечаем правильный ответ
 		function checkRight(corq){
-			correct += 1;
+			corq.style.color = "green";
 		}
 		
 		//Убираем и выключаем по истечении времени
