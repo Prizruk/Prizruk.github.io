@@ -2,7 +2,7 @@
 <html>
 <head>   
 	<script>
-		var givenMinutes = 1;
+		var givenMinutes = 0.2;
 		var start = 0;
 		var delta = 1;
 		var correct = 0;
@@ -53,7 +53,7 @@
 		//Проверяем ответы
 		function checkAnswers(){
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
+				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
 				const corq = document.getElementById('question'+(i+1));
 				//Автоматически неправильный, пока не правильный
 				corq.style.color = "red";
@@ -70,9 +70,9 @@
 						}
 						break;
 					case 'checkbox':
-						
 						for (let j = 0; j < buttons.length; j++){
 							if (buttons[i].checked != answers[i][j])
+								console.log(buttons[i].value)
 								break;
 						}
 						checkRight(corq);
@@ -92,7 +92,7 @@
 			startedTimer = false;
 			window.alert("Ваше время истекло");
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
+				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
 				for (const button of buttons) {
 					button.disabled = true;
 				}
