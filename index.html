@@ -2,9 +2,9 @@
 <html>
 <head>   
 	<script>
-		var givenMinutes = 1;
+		var givenMinutes = 0.5;
 		var start = Date.now() + givenMinutes*1000*60;
-		var delta = 0;
+		var delta = 1;
 		var isTimedOut = delta == 0
 		function digitalClock() {
 			delta = start - Date.now();
@@ -22,6 +22,11 @@
 			timertext = timertext + seconds;
 			document.getElementById("id_clock").innerHTML = timertext;
 			setTimeout("digitalClock()", 1000);
+		}
+		function disableOnTimeout() {
+			if (isTimedOut){
+				document.getElementById("id_clock").disabled = true;
+			}
 		}
 	</script>
 </head>
