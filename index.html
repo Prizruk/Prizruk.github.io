@@ -11,7 +11,7 @@
 		function checkAnswers(){
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'"]');
-				const corq = document.getElementById('q'+(i+1));
+				const corq = document.getElementById('question'+(i+1));
 				corq.style.color = "red";
 				for (const button of buttons) {
 					if (button.checked) {
