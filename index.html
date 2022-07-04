@@ -5,6 +5,12 @@
 		var givenMinutes = 0.5;
 		var start = Date.now() + givenMinutes*1000*60;
 		var delta = 1;
+		//Убираем или Выключаем по истечении времени
+		function disableOnTimeout() {
+			window.alert("Ваше время истекло");
+			document.getElementById("id_clock").hidden = true;
+		}
+		//Таймер
 		function digitalClock() {
 			delta = start - Date.now();
 			if (delta <= 0){
@@ -17,7 +23,7 @@
 					minutes = Math.floor(seconds/60);
 					seconds = seconds % 60;
 				}
-				//* добавление ведущих нулей */
+				//Добавление ведущих нулей и компановка
 				var timertext = "Осталось "
 				if (minutes < 10) timertext = timertext + "0";
 				timertext = timertext + minutes + ":";
@@ -27,11 +33,7 @@
 				setTimeout("digitalClock()", 1000);
 			}
 		}
-		function disableOnTimeout() {
-			window.alert("Ваше время истекло");
-			document.getElementById("id_clock").hidden = true;
 
-		}
 	</script>
 </head>
 <body>
