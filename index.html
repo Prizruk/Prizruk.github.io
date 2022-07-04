@@ -7,10 +7,12 @@
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3,[false,false,true,true]];
+		const answers = [3, [false,false,true,true], true, 9.81];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
+			//document.getElementById('qname').value = '';
+			//document.getElementById('qemail').value = '';
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				for (const button of buttons) {
@@ -71,9 +73,7 @@
 						break;
 					case 'checkbox':
 						var failedcheck = false;
-						console.log(buttons.length + " " + answers[i].length);
 						for (let j = 0; j < answers[i].length; j++){
-							console.log(buttons[j].checked + " " + answers[i][j]);
 							if (buttons[j].checked == answers[i][j]){
 								correct += 1/(answers[i].length);
 							}
@@ -83,12 +83,17 @@
 						}
 						if (!failedcheck) corq.style.color = "green";
 						break;
+					case 'number':
+						if (buttons[0].value == answers[i]) {
+							corq.style.color = "green";
+							correct += 1;
+						}
 				}
 			}
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
 			const correctPercent = correct / answers.length * 100;
-			var resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + ")";			
+			var resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + "%)";			
 			document.getElementById("testResults").innerHTML = resultText;
 		}
 		
@@ -157,9 +162,9 @@
 	<h2>Личная информация</h2>
 	<form id="personal_info" autocomplete="on">
 		<label for="qname">ФИО (полностью):</label><br>
-		<input type="text" id="qname" name="qname" size=40 minlength="5" required pattern="([а-яА-Я]+\s){2}[а-яА-Я]+$"><br>
+		<input type="text" id="qname" name="qname" size=40 minlength="5" required pattern="([а-яА-Я]+\s){2}[а-яА-Я]+$" placeholder="Иванов Иван Иванович"><br>
 		<label for="qemail">email:</label><br>
-		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$"><br>
+		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$" placeholder="klubnikove@yandex.ru"><br>
 	</form>
 	<p><button onclick="checkInfo()" id="startTestButton">Начать Тест</button></p>
 	<div id="id_clock">
@@ -184,6 +189,15 @@
 			<label for="ques23">Луна вращается вокруг Земли</label><br>
 			<input type="checkbox" id="ques24" name="ques24">
 			<label for="ques24">Земля вращается вокруг своей оси</label><br>
+		</div>
+		<div id="question3">
+			<p><b>3. Есть ли вода на Солнце?</p></b>
+			<input name="ques3" type="radio" value=true>Да<br>
+			<input name="ques3" type="radio" value=false>Нет<br>
+		</div>
+		<div id="question4">
+			<p><b>4. Чему равно ускорение свободного падения на Земле в м/с<sup>2</sup>? Укажите с точность до двух знаков после запятой.</b></p>
+			<input name="ques4" id="ques4" type="number" step='0.01'><br>
 		</div>
 	</form>
 	<p id="testResults"></p>
