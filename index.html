@@ -7,7 +7,7 @@
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия'];
+		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия', '1957-10'];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
@@ -79,6 +79,7 @@
 								sucesses++;
 							}
 						}
+						if (sucesses < answers[i].length/2) sucesses = 0;
 						correct += 1/(answers[i].length)*sucesses;
 						if (sucesses > 0 && sucesses < answers[i].length) corq.style.color = "gold";
 						if (sucesses == answers[i].length) corq.style.color = "green";
@@ -96,6 +97,11 @@
 							correct++;
 						}
 						break;
+					case 'month':
+						if (buttons[0].value == answers[i]){
+							corq.style.color = "green"
+							correct++;
+						}
 				}
 			}
 			//Округляем до двух знаков
@@ -176,8 +182,7 @@
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$" placeholder="klubnikove@yandex.ru"><br>
 	</form>
 	<p><button onclick="checkInfo()" id="startTestButton">Начать Тест</button></p>
-	<div id="id_clock">
-		<script>digitalClock();</script>
+	<div id="id_clock">	<script>digitalClock();</script>
 	</div>
 	<form id="questions" autocomplete="off">
 		<h2>Вопросы:</h2>
@@ -190,13 +195,13 @@
 		</div>
 		<div id="question2">
 			<p><b>2. Отметьте правдивые высказывания</b></p>
-			<input type="checkbox" id="ques21" name="ques21">
+			<input name="ques21" type="checkbox" id="ques21">
 			<label for="ques21">Земля плоская</label><br>
-			<input type="checkbox" id="ques22" name="ques22">
+			<input name="ques22" type="checkbox" id="ques22">
 			<label for="ques22">Солнце вращается вокруг Земли</label><br>
-			<input type="checkbox" id="ques23" name="ques23">
+			<input name="ques23" type="checkbox" id="ques23">
 			<label for="ques23">Луна вращается вокруг Земли</label><br>
-			<input type="checkbox" id="ques24" name="ques24">
+			<input name="ques24" type="checkbox" id="ques24">
 			<label for="ques24">Земля вращается вокруг своей оси</label><br>
 		</div>
 		<div id="question3">
@@ -206,11 +211,15 @@
 		</div>
 		<div id="question4">
 			<p><b>4. Чему равно ускорение свободного падения на Земле в м/с<sup>2</sup>? Укажите с точностью до двух знаков после запятой.</b></p>
-			<input name="ques4" id="ques4" type="number" step='0.01'><br>
+			<input name="ques4" type="number" id="ques4"  step='0.01'><br>
 		</div>
 		<div id="question5">
 			<p><b>5. Как называется наука, изучающая происхождение и развитие небесных тел?</b></p>
-			<input name="ques5" id="ques5" type="text"><br>
+			<input name="ques5" type="text" id="ques5"><br>
+		</div>
+		<div id="question6">
+			<p><b>6. В каком году и месяце был запущен на орбиту первый искусственный спутник (Спутник-1)?</b></p>
+			<input name="ques6" type="month" id="ques6" min="1900-01" max="2019-31">
 		</div>
 	</form>
 	<p><button onclick="disableOnTimeout()" id="endTestButton">Закончить Тест</button></p>
