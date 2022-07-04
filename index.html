@@ -128,11 +128,12 @@
 				}
 			}
 			document.getElementById("endTestButton").hidden = true;
+			document.getElementById("queclock").hidden = true;
 			checkAnswers();
 		}
 		
 		//Таймер
-		function digitalClock() {
+		function timerClock() {
 			var timertext = "Осталось "
 			if (startedTimer){
 				delta = start - Date.now();
@@ -152,15 +153,15 @@
 					timertext += minutes + ":";
 					if (seconds < 10) timertext += "0";
 					timertext += seconds;
-					document.getElementById("id_clock").innerHTML = timertext;
-					setTimeout("digitalClock()", 1000);
+					document.getElementById("queclock").innerHTML = timertext;
+					setTimeout("timerClock()", 1000);
 				}
 			}
 			else {
 				if (givenMinutes < 10) timertext += "0";
 				timertext += givenMinutes + ":00";
-				document.getElementById("id_clock").innerHTML = timertext;
-				setTimeout("digitalClock()", 1000);			
+				document.getElementById("queclock").innerHTML = timertext;
+				setTimeout("timerClock()", 1000);			
 			}
 		}
 
@@ -183,7 +184,7 @@
 		<input type="text" id="qemail" name="qemail" size=40 minlength="5" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z]+\.[a-zA-Z]+$" placeholder="klubnikove@yandex.ru"><br>
 	</form>
 	<p><button onclick="checkInfo()" id="startTestButton">Начать Тест</button></p>
-	<div id="id_clock">	<script>digitalClock();</script>
+	<div id="queclock">	<script>timerClock();</script>
 	</div>
 	<form id="questions" autocomplete="off">
 		<h2>Вопросы:</h2>
