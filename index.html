@@ -30,7 +30,7 @@
 			start = Date.now() + givenMinutes*1000*60;
 			delta = start - Date.now();
 
-			document.getElementById("id_clock").hidden = false;
+			startedTimer = true;
 			document.getElementById("questions").hidden = false;
 			document.getElementById("startTestButton").disabled = true;
 		}
@@ -159,10 +159,10 @@
 		<h2>Вопросы:</h2>
 		<div id="question1">
 			<p><b>1. Как называется минимальная скорость, которую необходимо придать телу, стартующему на поверхности Земли, чтобы оно могло преодолеть притяжение Земли и Солнца и покинуть пределы Солнечной системы</b></p>
-			<input name="q1" type="radio" value=1>Первая космическая
-			<input name="q1" type="radio" value=2>Вторая космическая
-			<input name="q1" type="radio" value=3>Третья космическая
-			<input name="q1" type="radio" value=4>Четвёртая космическая
+			<input name="q1" type="radio" value=1>Первая космическая<br>
+			<input name="q1" type="radio" value=2>Вторая космическая<br>
+			<input name="q1" type="radio" value=3>Третья космическая<br>
+			<input name="q1" type="radio" value=4>Четвёртая космическая<br>
 		</div>
 		<div id="question2">
 			<p><b>2. Отметьте правдивые высказывания</b></p>
