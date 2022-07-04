@@ -75,7 +75,7 @@
 						for (let j = 0; j < buttons.length; j++){
 							if (buttons[i].checked != answers[i][j]){
 								failedcheck = true;
-								correct -= 1/(answers.length);
+								correct -= 1/(answers[i].length);
 							}
 						}
 						if (!failedcheck) checkRight(corq);
@@ -85,7 +85,7 @@
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
 			const correctPercent = correct / answers.length * 100;
-			var resultText = "Вы получили " + correct + "/" + answers.length + "(" + correctPercent + ")";			
+			var resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + ")";			
 			document.getElementById("testResults").innerHTML = resultText;
 		}
 		
