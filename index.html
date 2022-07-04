@@ -2,9 +2,9 @@
 <html>
 <head>   
 	<script>
-		var start = Date.Now();
+		var start = Date.now();
 		function digitalClock() {
-			var delta = Date.Now() - start;
+			var delta = Date.now() - start;
 			var seconds = Math.floor(delta/1000);
 			var minutes = 0;
 			if (seconds > 60){
