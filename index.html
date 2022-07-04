@@ -107,7 +107,7 @@
 			}
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
-			const correctPercent = correct / answers.length * 100;
+			const correctPercent = Math.round((correct / answers.length + Number.EPSILON) * 10000) / 100;
 			const resultText = "Вы получили " + correct + "/" + answers.length + " (" + correctPercent + "%)";			
 			document.getElementById("testResults").innerHTML = resultText;
 		}
