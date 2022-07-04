@@ -12,7 +12,7 @@
 		//Сбрасываем кнопки и время
 		function resetAll(){
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
+				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				for (const button of buttons) {
 					if (button.type == "radio" || button.type == "checkbox") {
 						button.checked = false;
@@ -99,7 +99,7 @@
 			startedTimer = false;
 			window.alert("Ваше время истекло");
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
+				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				for (const button of buttons) {
 					button.disabled = true;
 				}
