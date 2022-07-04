@@ -2,12 +2,12 @@
 <html>
 <head>   
 	<script>
-		var givenMinutes = 0.3;
+		var givenMinutes = 3;
 		var start = 0;
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия', '1957-10'];
+		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия', '1957-10', 3];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
@@ -221,6 +221,14 @@
 		<div id="question6">
 			<p><b>6. В каком году и месяце был запущен на орбиту первый искусственный спутник (Спутник-1)? Если не показывается календарь, впишите вручную в формате YYYY-MM.</b></p>
 			<input name="ques6" type="month" id="ques6" min="1900-01" max="2019-31">
+		</div>
+		<div id="question7">
+			<p><b>7. Кто изображён на плакате?</b></p>
+			<img src="question7.jpg">
+			<input name="ques7" type="radio" value=1>Нил Армстронг<br>
+			<input name="ques7" type="radio" value=2>Алексей Леонов<br>
+			<input name="ques7" type="radio" value=3>Юрий Гагарин<br>
+			<input name="ques7" type="radio" value=4>Герман Титов<br>
 		</div>
 	</form>
 	<p><button onclick="disableOnTimeout()" id="endTestButton">Закончить Тест</button></p>
