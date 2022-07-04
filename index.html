@@ -53,7 +53,7 @@
 		//Проверяем ответы
 		function checkAnswers(){
 			for (let i = 0; i < answers.length; i++){
-				const buttons = document.querySelectorAll('input[name="q'+(i+1)+'*"]');
+				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
 				//Автоматически неправильный, пока не правильный
 				corq.style.color = "red";
@@ -159,21 +159,21 @@
 		<h2>Вопросы:</h2>
 		<div id="question1">
 			<p><b>1. Как называется минимальная скорость, которую необходимо придать телу, стартующему на поверхности Земли, чтобы оно могло преодолеть притяжение Земли и Солнца и покинуть пределы Солнечной системы</b></p>
-			<input name="q11" type="radio" value=1>Первая космическая<br>
-			<input name="q11" type="radio" value=2>Вторая космическая<br>
-			<input name="q11" type="radio" value=3>Третья космическая<br>
-			<input name="q11" type="radio" value=4>Четвёртая космическая<br>
+			<input name="ques1" type="radio" value=1>Первая космическая<br>
+			<input name="ques1" type="radio" value=2>Вторая космическая<br>
+			<input name="ques1" type="radio" value=3>Третья космическая<br>
+			<input name="ques1" type="radio" value=4>Четвёртая космическая<br>
 		</div>
 		<div id="question2">
 			<p><b>2. Отметьте правдивые высказывания</b></p>
-			<input type="checkbox" id="q21" name="q21">
-			<label for="q21">Земля плоская</label><br>
-			<input type="checkbox" id="q22" name="q22">
-			<label for="q22">Солнце вращается вокруг Земли</label><br>
-			<input type="checkbox" id="q23" name="q23">
-			<label for="q23">Луна вращается вокруг Земли</label><br>
-			<input type="checkbox" id="q24" name="q24">
-			<label for="q24">Земля вращается вокруг своей оси</label><br>
+			<input type="checkbox" id="ques21" name="ques21">
+			<label for="ques21">Земля плоская</label><br>
+			<input type="checkbox" id="ques22" name="ques22">
+			<label for="ques22">Солнце вращается вокруг Земли</label><br>
+			<input type="checkbox" id="ques23" name="ques23">
+			<label for="ques23">Луна вращается вокруг Земли</label><br>
+			<input type="checkbox" id="ques24" name="ques24">
+			<label for="ques24">Земля вращается вокруг своей оси</label><br>
 	</form>
 </body>
 </html>
