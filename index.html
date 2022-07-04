@@ -7,7 +7,7 @@
 		var delta = 1;
 		var correct = 0;
 		var startedTimer = false;
-		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия', '1957-10', 3];
+		const answers = [3, [false,false,true,true], 1, 9.81, 'астрономия', '1957-10', 3, 3];
 		
 		//Сбрасываем кнопки и время
 		function resetAll(){
@@ -224,11 +224,18 @@
 		</div>
 		<div id="question7">
 			<p><b>7. Кто изображён на плакате?</b></p>
-			<img src="question7.jpg">
+			<img src="question7.jpg"><br>
 			<input name="ques7" type="radio" value=1>Нил Армстронг<br>
 			<input name="ques7" type="radio" value=2>Алексей Леонов<br>
 			<input name="ques7" type="radio" value=3>Юрий Гагарин<br>
 			<input name="ques7" type="radio" value=4>Герман Титов<br>
+		</div>
+		<div id="question8">
+			<p><b>8. Как звали первое животное, выведенное на орбиту Земли?</b></p>
+			<input name="ques8" type="radio" value=1>Стрелка<br>
+			<input name="ques8" type="radio" value=2>Белка<br>
+			<input name="ques8" type="radio" value=3>Лайка<br>
+			<input name="ques8" type="radio" value=4>Чайка<br>
 		</div>
 	</form>
 	<p><button onclick="disableOnTimeout()" id="endTestButton">Закончить Тест</button></p>
