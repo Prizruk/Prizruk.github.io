@@ -2,16 +2,22 @@
 <html>
 <head>   
 	<script>
+		var start = date.Now();
 		function digitalClock() {
-		var date = new Date();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
-		var seconds = date.getSeconds();
-		   //* добавление ведущих нулей */
-		  if (hours < 10) hours = "0" + hours;
-		  if (minutes < 10) minutes = "0" + minutes;
-		  if (seconds < 10) seconds = "0" + seconds;
-			document.getElementById("id_clock").innerHTML = hours + ":" + minutes + ":" + seconds;
+			var delta = date.Now() - start;
+			var seconds = math.floor(delta/1000);
+			var minutes = 0;
+			if (seconds > 60){
+				minutes = math.floor(seconds/60);
+				seconds = seconds % 60;
+			}
+			//* добавление ведущих нулей */
+			var timertext = "Осталось "
+			if (minutes < 10) timertext = timertext + "0";
+			timertext = timertext + minutes + ":";
+			if (seconds < 10) timertext = timertext + "0";
+			timertext = timertext + seconds;
+			document.getElementById("id_clock").innerHTML = timertext;
 			setTimeout("digitalClock()", 1000);
 		}
 	</script>
