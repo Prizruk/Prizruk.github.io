@@ -9,24 +9,24 @@
 		function digitalClock() {
 			delta = start - Date.now();
 			isTimedOut = delta <= 0
-			var seconds = Math.floor(delta/1000);
-			var minutes = 0;
-			if (seconds > 60){
-				minutes = Math.floor(seconds/60);
-				seconds = seconds % 60;
-			}
-			//* добавление ведущих нулей */
-			var timertext = "Осталось "
-			if (minutes < 10) timertext = timertext + "0";
-			timertext = timertext + minutes + ":";
-			if (seconds < 10) timertext = timertext + "0";
-			timertext = timertext + seconds;
-			document.getElementById("id_clock").innerHTML = timertext;
-			setTimeout("digitalClock()", 1000);
-		}
-		function disableOnTimeout() {
 			if (isTimedOut){
 				document.getElementById("id_clock").hidden = true;
+			}
+			else {
+				var seconds = Math.floor(delta/1000);
+				var minutes = 0;
+				if (seconds > 60){
+					minutes = Math.floor(seconds/60);
+					seconds = seconds % 60;
+				}
+				//* добавление ведущих нулей */
+				var timertext = "Осталось "
+				if (minutes < 10) timertext = timertext + "0";
+				timertext = timertext + minutes + ":";
+				if (seconds < 10) timertext = timertext + "0";
+				timertext = timertext + seconds;
+				document.getElementById("id_clock").innerHTML = timertext;
+				setTimeout("digitalClock()", 1000);
 			}
 		}
 	</script>
@@ -37,7 +37,6 @@
 	<div id="id_clock">
 		<script>digitalClock();</script>
 	</div>
-	<script>disableOnTimeout();</script>
 
 	
 </body>
