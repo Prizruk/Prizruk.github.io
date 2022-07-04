@@ -61,7 +61,6 @@
 					case 'radio':
 						for (const button of buttons) {
 							if (button.checked) {
-								console.log(button.value);
 								if (button.value == answers[i]){
 									checkRight(corq);
 									break;
@@ -70,12 +69,14 @@
 						}
 						break;
 					case 'checkbox':
+						var failedcheck = false;
 						for (let j = 0; j < buttons.length; j++){
-							if (buttons[i].checked != answers[i][j])
-								console.log(buttons[i].value)
+							if (buttons[i].checked != answers[i][j]){
+								failedcheck = true;
 								break;
+							}
 						}
-						checkRight(corq);
+						if (!failedcheck) checkRight(corq);
 						break;
 				}
 			}
