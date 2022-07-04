@@ -73,6 +73,7 @@
 						var failedcheck = false;
 						correct += 1;
 						for (let j = 0; j < buttons.length; j++){
+							console.log(buttons[i].checked + " " + answers[i][j]);
 							if (buttons[i].checked != answers[i][j]){
 								failedcheck = true;
 								correct -= 1/(answers[i].length);
