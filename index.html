@@ -59,7 +59,7 @@
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
 				//Отмечаем все правильные
-				const correctAnswers = document.querySelectorAll('input[id*="quest'+(i+1)+'correct"]')
+				document.getElementById('corr'+(i+1)).style.fontWeight = "bold";				
 				for (const correctAnswer of correctAnswers) {
 					correctAnswer.style.fontWeight = "bold";
 				}				
@@ -229,7 +229,7 @@
 			<img src="question7.jpg"><br>
 			<input name="ques7" type="radio" value=1>Нил Армстронг<br>
 			<input name="ques7" type="radio" value=2>Алексей Леонов<br>
-			<input name="ques7" type="radio" value=3>Юрий Гагарин<br>
+			<input name="ques7" type="radio" value=3><div id="corr7">Юрий Гагарин</div><br>
 			<input name="ques7" type="radio" value=4>Герман Титов<br>
 		</div>
 		<div id="question8">
