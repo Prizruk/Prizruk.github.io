@@ -59,7 +59,7 @@
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
 				//Отмечаем все правильные
-				var cora = document.querySelectorAll('div[id*="corr'+(i+1)+'"]');
+				var cora = document.querySelectorAll('label[id*="corr'+(i+1)+'"]');
 				for (const correctAnswer of cora) {
 					correctAnswer.style.fontWeight = "bold";
 				}				
@@ -203,9 +203,9 @@
 			<input name="ques22" type="checkbox" id="ques22">
 			<label for="ques22">Солнце вращается вокруг Земли</label><br>
 			<input name="ques23" type="checkbox" id="ques23">
-			<div id="corr21"><label for="ques23">Луна вращается вокруг Земли</label></div>
+			<label for="ques23" id="corr21">Луна вращается вокруг Земли</label></div>
 			<input name="ques24" type="checkbox" id="ques24">
-			<div id="corr22"><label for="ques24" id="corr22">Земля вращается вокруг своей оси</label></div>
+			<label for="ques24" id="corr22">Земля вращается вокруг своей оси</label></div>
 		</div>
 		<div id="question3">
 			<p><b>3. Есть ли вода на Солнце?</p></b>
@@ -227,10 +227,14 @@
 		<div id="question7">
 			<p><b>7. Кто изображён на плакате?</b></p>
 			<img src="question7.jpg"><br>
-			<input name="ques7" type="radio" value=1>Нил Армстронг<br>
-			<input name="ques7" type="radio" value=2>Алексей Леонов<br>
-			<div id="corr7"><input name="ques7" type="radio" value=3>Юрий Гагарин</div>
-			<input name="ques7" type="radio" value=4>Герман Титов<br>
+			<input name="ques7" id="ques71" type="radio" value=1>
+			<label for="ques71">Нил Армстронг</label><br>
+			<input name="ques7" id="ques72" type="radio" value=2>
+			<label for="ques72">Алексей Леонов</label><br>
+			<input name="ques7" id="ques73" type="radio" value=3>
+			<label for="ques73" id="corr7">Юрий Гагарин</label><br>
+			<input name="ques7" id="ques74" type="radio" value=4>
+			<label for="ques74">Герман Титов</label><br>
 		</div>
 		<div id="question8">
 			<p><b>8. Как звали первое животное, выведенное на орбиту Земли?</b></p>
