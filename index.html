@@ -59,9 +59,8 @@
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
 				//Отмечаем все правильные
-				var cora = document.getElementById("corr"+(i+1));
-				cora.style.fontWeight = "bold";				
-				for (const correctAnswer of correctAnswers) {
+				var cora = document.querySelectorAll('div[id*="corr'+(i+1)+'"]');
+				for (const correctAnswer of cora) {
 					correctAnswer.style.fontWeight = "bold";
 				}				
 				//Автоматически неправильный, пока не правильный
@@ -204,9 +203,9 @@
 			<input name="ques22" type="checkbox" id="ques22">
 			<label for="ques22">Солнце вращается вокруг Земли</label><br>
 			<input name="ques23" type="checkbox" id="ques23">
-			<label for="ques23">Луна вращается вокруг Земли</label><br>
+			<label for="ques23" id="corr21">Луна вращается вокруг Земли</label><br>
 			<input name="ques24" type="checkbox" id="ques24">
-			<label for="ques24">Земля вращается вокруг своей оси</label><br>
+			<label for="ques24" id="corr22">Земля вращается вокруг своей оси</label><br>
 		</div>
 		<div id="question3">
 			<p><b>3. Есть ли вода на Солнце?</p></b>
