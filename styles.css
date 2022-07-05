@@ -4,3 +4,7 @@ input:invalid {
 body {
 	font-family: helvetica;
 }
+p {
+	margin: 10px;
+	
+}

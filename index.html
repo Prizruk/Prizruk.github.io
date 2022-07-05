@@ -58,6 +58,11 @@
 			for (let i = 0; i < answers.length; i++){
 				const buttons = document.querySelectorAll('input[name*="ques'+(i+1)+'"]');
 				const corq = document.getElementById('question'+(i+1));
+				//Отмечаем все правильные
+				const correctAnswers = document.querySelectorAll('input[id*="quest'+(i+1)+'correct"]')
+				for (const correctAnswer of correctAnswers) {
+					correctAnswer.style.fontWeight = "bold";
+				}				
 				//Автоматически неправильный, пока не правильный
 				corq.style.color = "red";
 				switch (buttons[0].type) {
@@ -104,7 +109,7 @@
 						}
 						break;
 				}
-			}
+			}		
 			//Округляем до двух знаков
 			correct = Math.round((correct + Number.EPSILON) * 100) / 100
 			const correctPercent = Math.round((correct / answers.length + Number.EPSILON) * 10000) / 100;
@@ -168,7 +173,7 @@
 	</script>
 	<title>Тест теста</title>
 	<link rel="icon" type="image/x-icon" href="favicon.png">
-	<link rel="stylesheet" type="text/css" href="styles.css"/>
+	<link rel="stylesheet" href="styles.css"/>
 </head>
 <body onload="resetAll()">
 	<h1>Тестовая версия тестовой страницы с тестом теста</h1>
@@ -222,10 +227,10 @@
 		<div id="question7">
 			<p><b>7. Кто изображён на плакате?</b></p>
 			<img src="question7.jpg"><br>
-			<input name="ques7" type="radio" value=1>Нил Армстронг<br>
-			<input name="ques7" type="radio" value=2>Алексей Леонов<br>
-			<input name="ques7" type="radio" value=3>Юрий Гагарин<br>
-			<input name="ques7" type="radio" value=4>Герман Титов<br>
+			<input name="ques7" type="radio" value=1><p>Нил Армстронг</p>
+			<input name="ques7" type="radio" value=2><p>Алексей Леонов</p>
+			<input name="ques7" type="radio" value=3><p id="quest7cor">Юрий Гагарин</p>
+			<input name="ques7" type="radio" value=4><p>Герман Титов</p>
 		</div>
 		<div id="question8">
 			<p><b>8. Как звали первое животное, выведенное на орбиту Земли?</b></p>
