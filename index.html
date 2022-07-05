@@ -94,6 +94,7 @@
 							corq.style.color = "green";
 							correct++;
 						}
+						document.getElementById('corr'+(i+1)).hidden = false;
 						break;
 					case 'text':
 						const textcheck = buttons[0].value.trim().toLowerCase();
@@ -101,12 +102,14 @@
 							corq.style.color = "green"
 							correct++;
 						}
+						document.getElementById('corr'+(i+1)).hidden = false;
 						break;
 					case 'month':
 						if (buttons[0].value == answers[i]){
 							corq.style.color = "green"
 							correct++;
 						}
+						document.getElementById('corr'+(i+1)).hidden = false;
 						break;
 				}
 			}		
@@ -191,10 +194,14 @@
 		<h2>Вопросы:</h2>
 		<div id="question1">
 			<p><b>1. Как называется минимальная скорость, которую необходимо придать телу, стартующему на поверхности Земли, чтобы оно могло преодолеть притяжение Земли и Солнца и покинуть пределы Солнечной системы?</b></p>
-			<input name="ques1" type="radio" value=1>Первая космическая<br>
-			<input name="ques1" type="radio" value=2>Вторая космическая<br>
-			<input name="ques1" type="radio" value=3>Третья космическая<br>
-			<input name="ques1" type="radio" value=4>Четвёртая космическая<br>
+			<input name="ques1" id="ques11" type="radio" value=1>
+			<label for="ques11">Первая космическая</label><br>
+			<input name="ques1" id="ques12" type="radio" value=2>
+			<label for="ques12">Вторая космическая</label><br>
+			<input name="ques1" id="ques13" type="radio" value=3>
+			<label for="ques13" id="corr1">Третья космическая</label><br>
+			<input name="ques1" id="ques14" type="radio" value=4>
+			<label for="ques14">Четвёртая космическая</label><br>
 		</div>
 		<div id="question2">
 			<p><b>2. Отметьте правдивые высказывания:</b></p>
@@ -209,20 +216,26 @@
 		</div>
 		<div id="question3">
 			<p><b>3. Есть ли вода на Солнце?</p></b>
-			<input name="ques3" type="radio" value=1>Да<br>
-			<input name="ques3" type="radio" value=0>Нет<br>
+			<input name="ques3" id="ques31" type="radio" value=1>
+			<label for="ques31" id="corr3">Да</label><br>
+			<input name="ques3" id="ques32" type="radio" value=0>
+			<label for="ques32">Нет</label><br>
 		</div>
 		<div id="question4">
 			<p><b>4. Чему равно ускорение свободного падения на Земле в м/с<sup>2</sup>? Укажите с точностью до двух знаков после запятой.</b></p>
 			<input name="ques4" type="number" id="ques4"  step='0.01'><br>
+			<p hidden id="corr4"><b>Ответ: 9.81</b></p>
 		</div>
 		<div id="question5">
 			<p><b>5. Как называется наука, изучающая происхождение и развитие небесных тел?</b></p>
 			<input name="ques5" type="text" id="ques5"><br>
+			<p hidden id="corr5"><b>Ответ: Астрономия</b></p>
+
 		</div>
 		<div id="question6">
 			<p><b>6. В каком году и месяце был запущен на орбиту первый искусственный спутник (Спутник-1)? Если не показывается календарь, впишите вручную в формате YYYY-MM.</b></p>
 			<input name="ques6" type="month" id="ques6" min="1900-01" max="2019-31">
+			<p hidden id="corr6"><b>Ответ: 1957-10</b></p>
 		</div>
 		<div id="question7">
 			<p><b>7. Кто изображён на плакате?</b></p>
